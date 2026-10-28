@@ -1,0 +1,265 @@
+/* ================= 全局样式：温和科普读物 / 自然博物馆风格 =================
+   浅色纸感背景 + 纯色卡片 + 细边框；强调色为单一柔和暖橙。
+   刻意不使用：渐变、霓虹发光、玻璃拟态、深色科技背景、装饰性纹理。 */
+
+:root {
+  --bg: #f6f2ea;            /* 米白纸色页面背景 */
+  --panel: #ffffff;         /* 卡片纯色背景 */
+  --panel-2: #f3eee4;       /* 卡片内的浅色块 */
+  --media-bg: #f1ebe0;      /* 动画/视频区中性浅底 */
+  --line: #e5ddcd;          /* 细边框 */
+  --line-strong: #d5cbb6;   /* 稍深的边框/分隔线 */
+  --text: #33322e;          /* 主文字：深灰近黑 */
+  --text-dim: #8a8375;      /* 辅助文字：中灰 */
+  --accent: #4e7d61;        /* 强调色：苔绿（自然博物馆/图鉴气质，避开 AI 常见的陶土橙默认） */
+  --accent-dark: #3d6a4f;   /* 强调色悬停/加深 */
+  --accent-tint: #e9f0e7;   /* 强调色浅底块 */
+  --warn: #a97f3c;          /* 筹备中提示 */
+  --warn-tint: #f7efdc;
+  --warn-line: #e5d5b2;
+  --danger: #b95a4e;
+  --danger-tint: #f8e9e6;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 20px 96px; /* 底部留出固定免责声明栏的高度 */
+}
+
+.app-header {
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.app-title {
+  margin: 0 0 6px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+
+.app-subtitle {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 14px;
+  max-width: 620px;
+}
+
+/* ---------- 通用面板 / 按钮 / 徽章 ---------- */
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.panel-title {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
+  color: var(--text);
+  padding: 9px 14px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #ffffff;
+}
+
+.badge {
+  font-size: 11.5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--warn-line);
+  white-space: nowrap;
+}
+
+.badge-ok {
+  color: var(--accent-dark);
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.badge-wip {
+  color: var(--warn);
+  border-color: var(--warn-line);
+  background: var(--warn-tint);
+}
+
+/* ---------- 骨架屏 / 提示 / 错误 ---------- */
+
+.skeleton {
+  border-radius: 8px;
+  background: var(--panel-2);
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.sk-line {
+  height: 14px;
+  margin-bottom: 10px;
+}
+
+.sk-block {
+  height: 240px;
+  margin-bottom: 12px;
+}
+
+.w40 { width: 40%; }
+.w90 { width: 90%; }
+.w70 { width: 70%; }
+
+.skeleton-wrap,
+.coming-soon,
+.empty-hint {
+  text-align: center;
+}
+
+.coming-emoji {
+  font-size: 42px;
+  margin: 18px 0 6px;
+}
+
+.coming-hint,
+.empty-hint p {
+  color: var(--text-dim);
+  font-size: 13.5px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error-box {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid var(--danger);
+  background: var(--danger-tint);
+  border-radius: 10px;
+  color: var(--danger);
+  font-size: 13px;
+}
+
+.error-box p {
+  margin: 0 0 10px;
+}
+
+.inline-error {
+  margin: 14px 0 0;
+  color: var(--danger);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ---------- 探索页布局：桌面两栏 / 移动端堆叠 ---------- */
+
+.explorer {
+  display: grid;
+  grid-template-columns: minmax(0, 330px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.explorer-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+@media (max-width: 960px) {
+  .explorer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app-shell {
+    padding: 20px 16px 104px;
+  }
+}
+
+.tips ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-dim);
+  font-size: 12.5px;
+  line-height: 2;
+}
+
+/* ---------- 底部固定免责声明：浅色、细边框、小字中灰 ---------- */
+
+.disclaimer-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  padding: 10px 18px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-dim);
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+}

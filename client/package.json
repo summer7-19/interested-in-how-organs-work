@@ -1,0 +1,26 @@
+{
+  "name": "@organ-workflow/client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit -p tsconfig.json && vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "pinia": "^2.2.6",
+    "three": "^0.169.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/three": "^0.169.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "typescript": "~5.5.4",
+    "vite": "^5.4.11",
+    "vue-tsc": "^2.1.10"
+  }
+}

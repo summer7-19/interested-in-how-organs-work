@@ -1,0 +1,28 @@
+{
+  "name": "@organ-workflow/server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "人体器官科普站点后端：仅提供科普数据与媒体元数据，不提供诊断/治疗/个体化建议",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "helmet": "^7.2.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.14.0",
+    "tsx": "^4.19.2",
+    "typescript": "~5.5.4"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "organ-workflow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "人体器官工作流科普网站（Vue 3 + Express，仅科普用途，不构成医疗建议）",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently -n server,client -c cyan,magenta \"npm run dev --workspace server\" \"npm run dev --workspace client\"",
+    "dev:server": "npm run dev --workspace server",
+    "dev:client": "npm run dev --workspace client",
+    "build": "npm run build --workspace server && npm run build --workspace client",
+    "start": "npm run start --workspace server",
+    "typecheck": "npm run typecheck --workspace server && npm run typecheck --workspace client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
